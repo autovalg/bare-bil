@@ -1,5 +1,6 @@
 import "./globals.css";
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 
 export const metadata = {
   title: "Bare Bil AS",
@@ -52,49 +53,7 @@ export default function RootLayout({
                 </div>
               </Link>
 
-              <details className="relative">
-                <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded border border-white/15 text-white">
-                  <span className="text-[22px] leading-none">☰</span>
-                </summary>
-
-                <div className="absolute right-0 mt-3 w-[260px] rounded border border-white/10 bg-[#111111] p-4 shadow-xl">
-                  <nav className="flex flex-col gap-4">
-                    {menuItems.map((item) =>
-                      item.external ? (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[14px] font-semibold uppercase text-white transition hover:opacity-75"
-                        >
-                          {item.label}
-                        </a>
-                      ) : (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className="text-[14px] font-semibold uppercase text-white transition hover:opacity-75"
-                        >
-                          {item.label}
-                        </Link>
-                      )
-                    )}
-                  </nav>
-
-                  <div className="mt-6 flex justify-center">
-                    <a
-                      href="#"
-                      aria-label="Facebook"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1f63d8] transition hover:scale-105"
-                    >
-                      <span className="text-[22px] font-bold leading-none text-black">
-                        f
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </details>
+              <MobileMenu menuItems={menuItems} />
             </div>
           </header>
 
